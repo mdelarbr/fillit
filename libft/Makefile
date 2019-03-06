@@ -1,0 +1,109 @@
+# **************************************************************************** #
+#                                                           LE - /             #
+#                                                               /              #
+#    Makefile                                         .::    .:/ .      .::    #
+#                                                  +:+:+   +:    +:  +:+:+     #
+#    By: husahuc <husahuc@student.42.fr>            +:+   +:    +:    +:+      #
+#                                                  #+#   #+    #+    #+#       #
+#    Created: 2018/10/27 16:42:25 by husahuc      #+#   ##    ##    #+#        #
+#    Updated: 2018/11/16 15:46:25 by husahuc     ###    #+. /#+    ###.fr      #
+#                                                          /                   #
+#                                                         /                    #
+# **************************************************************************** #
+
+CC = gcc
+FLAGS = -Wall -Wextra -Werror
+FUNCTION =	./ft_atoi.c \
+			./ft_bzero.c \
+			./ft_count_block.c \
+			./ft_count_word.c \
+			./ft_isalnum.c \
+			./ft_isalpha.c \
+			./ft_isascii.c \
+			./ft_isdigit.c \
+			./ft_isprint.c \
+			./ft_itoa.c \
+			./ft_lstadd.c \
+			./ft_lstdel.c \
+			./ft_lstdelone.c \
+			./ft_lstiter.c \
+			./ft_lstnew.c \
+			./ft_lstmap.c \
+			./ft_memalloc.c \
+			./ft_memccpy.c \
+			./ft_memchr.c \
+			./ft_memcmp.c \
+			./ft_memcpy.c \
+			./ft_memdel.c \
+			./ft_memmove.c \
+			./ft_memset.c \
+			./ft_putchar.c \
+			./ft_putchar_fd.c \
+			./ft_putendl.c \
+			./ft_putendl_fd.c \
+			./ft_putnbr.c \
+			./ft_putnbr_fd.c \
+			./ft_putstr.c \
+			./ft_putstr.c \
+			./ft_putstr_fd.c \
+			./ft_strcapitalize.c \
+			./ft_strcat.c \
+			./ft_strchr.c \
+			./ft_strclr.c \
+			./ft_strcmp.c \
+			./ft_strcpy.c \
+			./ft_strdel.c \
+			./ft_strdup.c \
+			./ft_strequ.c \
+			./ft_striter.c \
+			./ft_striteri.c \
+			./ft_strjoin.c \
+			./ft_strlcat.c \
+			./ft_strlen.c \
+			./ft_strmap.c \
+			./ft_strmapi.c \
+			./ft_strncat.c \
+			./ft_strncmp.c \
+			./ft_strncpy.c \
+			./ft_strnequ.c \
+			./ft_strnew.c \
+			./ft_strnstr.c \
+			./ft_strrchr.c \
+			./ft_strsplit.c \
+			./ft_strstr.c \
+			./ft_strsub.c \
+			./ft_strtrim.c \
+			./ft_strlowcase.c \
+			./ft_strupcase.c \
+			./ft_tolower.c \
+			./ft_toupper.c \
+			./ft_realloc.c \
+			./get_next_line.c \
+			./ft_qsqrt.c \
+			./ft_strdel_2.c
+OBJ = $(FUNCTION:.c=.o)
+INC = ./libft.h ./get_next_line.h
+NAME = libft.a
+
+all: $(NAME)
+
+$(NAME): $(OBJ) $(INC)
+	@echo "\033[0;32m [OK] \033[0m       \033[0;33m Compiling lib:\033[0m" $(NAME)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
+
+%.o: %.c $(INC)
+	@echo "\033[0;32m [OK] \033[0m       \033[0;33m Compiling:\033[0m" $<
+	@$(CC) -c $(FLAGS) $< -o $@
+
+.PHONY: clean fclean
+
+clean:
+	@echo "\033[0;32m [OK] \033[0m       \033[0;33m supress:\033[0m" $(OBJ)
+	@rm -f $(OBJ)
+
+fclean: clean
+	@echo "\033[0;32m [OK] \033[0m       \033[0;33m supress:\033[0m" $(NAME)
+	@rm -f $(NAME)
+
+re: fclean all
